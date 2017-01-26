@@ -16,10 +16,8 @@
 #define FILTER_Y                        25
 
 static bool run;
+
 void command();
-
-using namespace std;
-
 cv::Mat getRect(cv::Mat HSV, int lowHue, int highHue, cv::Scalar Color);
 
 int main (int argc, char** argv)
@@ -62,9 +60,9 @@ int main (int argc, char** argv)
 }
 
 void command(){
-    string hold_value = " ";
+    std::string hold_value = " ";
     printf("Press any key to close\n");
-    cin >> hold_value;	
+    std::cin >> hold_value;	
     run = false;
     return;
 }
@@ -87,7 +85,7 @@ cv::Mat getRect(cv::Mat HSV, int lowHue, int highHue, cv::Scalar Color){
 
     cv::findContours(range, contours, cv::RETR_TREE, CV_CHAIN_APPROX_SIMPLE);
 
-    std::vector<vector<cv::Point>> contours_poly(contours.size());
+    std::vector<std::vector<cv::Point>> contours_poly(contours.size());
     std::vector<cv::Rect> boundRect(contours.size());
 
     for(int i = 0; i < contours.size(); i++)
